@@ -67,7 +67,7 @@ with open(input_path, newline = "") as csvfile:
 #Format the Output for Display
 output = (
     f"\nFinancial Analysis\n"
-    f"-------------------------\n"
+    f"-------------------------------------------------------------------------------\n"
     f"Total Months: {total_months}\n"
     f"Total Net amount of Profit/Losses Over Entire Period:   $ {total_ProfitLosses}\n"
     f"Average of changes in Profit/Losses Over Entire Period: $ {str(round(Avg_Change,2))}\n"
