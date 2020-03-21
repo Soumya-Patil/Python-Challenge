@@ -1,6 +1,6 @@
 
 Financial Analysis
--------------------------------------------------------------------------------
+-------------------------------------------------------------------
 Total Months: 86
 Total Net amount of Profit/Losses Over Entire Period:   $ 38382578
 Average of changes in Profit/Losses Over Entire Period: $ -2315.12
