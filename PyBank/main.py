@@ -13,6 +13,7 @@ monthOfChange = [] #list to keep months showing change
 revenueChangeList = [] #list to track the change of revenue ,so as to sum up later
 revenueChange = 0 
 total_ProfitLosses = 0 
+#--------------------------------------------------------------------------------------
 
 # Open the CSV file and create an object of it for iteration
 with open(input_path, newline = "") as csvfile:
@@ -26,6 +27,8 @@ with open(input_path, newline = "") as csvfile:
     total_months +=1
     total_ProfitLosses += int(first_row[1])
     prev_revenue = int(first_row[1])
+
+#---------------------------------------------------------------------------------------
 
     # for second row and there on loop it till the end
     for row in csvreader:
@@ -42,7 +45,12 @@ with open(input_path, newline = "") as csvfile:
          
         #Total net amount of Profit/Losses over entire period
         total_ProfitLosses = total_ProfitLosses + int(row[1])
-       
+
+#-----------------------------------------------------------------------------------------  
+#      
+    # Average Change in Profit/Losses over the entire period
+    Avg_Change = sum(revenueChangeList)/len(revenueChangeList)
+    
     # Greatest Increase in Profits
     greatestIncrease = max(revenueChangeList)
     greatest_index = revenueChangeList.index(greatestIncrease)
@@ -53,8 +61,8 @@ with open(input_path, newline = "") as csvfile:
     lowest_index = revenueChangeList.index(greatestDecrease)
     lowest_date = monthOfChange[lowest_index]
 
-    # Average Change in Profit/Losses over the entire period
-    Avg_Change = sum(revenueChangeList)/len(revenueChangeList)
+#------------------------------------------------------------------------------------------
+    
 
 #Format the Output for Display
 output = (
