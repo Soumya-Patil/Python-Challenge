@@ -40,8 +40,9 @@ with open(input_path,newline = "") as csvfile:
     
     for votes in Candidate_Votes:
         Percentage = (votes/total_votes) * 100
-        #Percentage = round(Percentage)
-        #Percentage = "%"
+        Percentage = round(Percentage)
+        Percentage = "%.3f%%" % Percentage
+        Percentage_Votes.append(Percentage)
 
 
     #---------------- Decide on the Winner------------------
@@ -51,18 +52,19 @@ with open(input_path,newline = "") as csvfile:
     WinnerName = Candidates[serial]
 
 
-    #---------------Format the Output for Display------------
+#---------------Format the Output for Display------------
 
-    output = (
-    f"\nElection Results \n"
-    f"----------------------------------------\n"
-    f"Total Votes: {total_votes}\n"
-    f"----------------------------------------\n"
-     for i in range(len(Candidates)):
-         f"{Candidates[i]}: {str(Percentage_Votes[i])} ({str(Candidate_votes[i])})")
-    f"-----------------------------------------\n")
-    f"Winner: {WinnerName}")
-    "------------------------------------------")
+output = (
+f"\nElection Results \n"
+f"----------------------------------------\n"
+f"Total Votes: {total_votes}\n"
+f"----------------------------------------\n"
+for i in range(len(Candidates)):
+    f"{Candidates[i]}: {str(Percentage_Votes[i])} {Candidate_votes[i]}"
+f"-----------------------------------------\n"
+f"Winner: {WinnerName}\n"
+f"------------------------------------------\n"
+)
 
    
  #Print OutPut to terminal
