@@ -26,23 +26,23 @@ with open(input_path) as csvfile:
     for row in csvreader:
         #count total months and total revenue
         total_months=total_months + 1
-        total_revenue=total_revenue + int(row["Profit/Losses"])
+        total_ProfitLosses =total_ProfitLosses + int(row["Profit/Losses"])
 
         #track the change in revenue
-        revenue_change = int(row["Profit/Losses"])- prev_revenue
-        pre_revenue = int(row["Profit/Losses"])
-        revenueChangeList = revenueChangeList + [revenue_change]
+        revenueChange = int(row["Profit/Losses"])- prev_revenue
+        prev_revenue = int(row["Profit/Losses"])
+        revenueChangeList = revenueChangeList + [revenueChange]
         monthOfChange = monthOfChange + [row["Date"]]
 
         #Calculate the Greatest Increase in Profit
-        if(revenue_change>greatestIncrease[1]):
+        if(revenueChange>greatestIncrease[1]):
             greatestIncrease[0]=row["Date"]
-            greatestDecrease[1]=revenue_change
+            greatestIncrease[1]=revenueChange
 
         #Calculate the Greatest Decrease in Losses
-        if(revenue_change<greatestDecrease[1]):
+        if(revenueChange<greatestDecrease[1]):
             greatestDecrease[0]=row["Date"]
-            greatestDecrease[1]=revenue_change
+            greatestDecrease[1]=revenueChange
 
 # Calculate the AverageChange in Profit/Losses for the entire period
 Avg_Change = sum(revenueChangeList)/len(revenueChangeList) #changes/number of times its changed 
