@@ -19,9 +19,9 @@ total_ProfitLosses = 0
 # the csv.DictReader() returns a dictionary for each row read-off of the CSV file . 
 with open(csvpath) as csvfile:
     # create an object of the csv_DictReader() which can be iterated using a for loop
-    looper = csv.DictReader(csvfile)
+    csvreader = csv.DictReader(csvfile)
 
-    for row in looper:
+    for row in csvreader:
         #count total months and total revenue
         total_months=total_months + 1
         total_revenue=total_revenue + int(row["Profit/Losses"])
