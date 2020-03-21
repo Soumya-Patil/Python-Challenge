@@ -1,23 +1,25 @@
-# First we'll import the os module
+# First we'll import the os module 
 # This will allow us to create file paths across operating systems
 import os
+
 # Module for reading CSV files
 import csv
 
-csvpath = os.path.join('..', 'PyBank', 'budget_data.csv')
+input_path = os.path.join('..', 'PyBank', 'budget_data.csv') #specify the file path to read from
+output_path = os.path.join('..','PyBank','Text_Output.txt')  # specify the file to write to
 
 # Variables to track
 total_months= 0 #to count total_months
-prev_revenue = 0 # to calculate change in 
-monthOfChange = [] 
-revenueChangeList= [] 
-greatestIncrease = ["",0] # create a List with place holders for date of change and amount 
+prev_revenue = 0 # to calculate change in revenue by month
+monthOfChange = [] #list to keep months showing change
+revenueChangeList= [] #list to track the change of revenue 
+greatestIncrease = ["",0] # create a List with place holders for date of change and amount
 greatestDecrease = ["",99999999999999] # # create a List with place holders for date of change and amount
 total_ProfitLosses = 0 
 
 # Since the CSV file can be comprehended as KEY-VALUE (names of column:Values of Data) pairs of a dictionary.
-# the csv.DictReader() returns a dictionary for each row read-off of the CSV file . 
-with open(csvpath) as csvfile:
+# the csv.DictReader() returns a dictionary for each row read of the CSV file . 
+with open(input_path) as csvfile:
     # create an object of the csv_DictReader() which can be iterated using a for loop
     csvreader = csv.DictReader(csvfile)
 
@@ -59,6 +61,6 @@ output = (
 print(output)
 
 #Export it to a text file
-with open(csvpath,"w") as textfile:
+with open(output_path,"w") as textfile:
     textfile.write(output)
 
