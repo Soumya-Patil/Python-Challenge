@@ -52,14 +52,29 @@ with open(input_path,newline = "") as csvfile:
     WinnerName = Candidates[serial]
 
 
-#---------------Format the Output for Display------------
+#--------Format the Output for Display and Write to File------------
+with open(output_path,"w") as textfile:
+    
+    Heading= (
+        f"\nElection Results\n"
+        f"--------------------------\n"
+        f"Total Votes: {str(total_votes)}\n"
+        f"--------------------------\n")
+    print(Heading, end = "")
+    textfile.write(Heading) 
+    
+    
+    for i in range(len(Candidates)):
+        Voter_Stats = f"{Candidates[i]}: {str(Percentage_Votes[i])} ({str(Candidate_Votes[i])})\n"
+        print(Voter_Stats, end ="")
+        textfile.write(Voter_Stats)
 
-print("Election Results")
-print("--------------------------")
-print(f"Total Votes: {str(total_votes)}")
-print("--------------------------")
-for i in range(len(Candidates)):
-    print(f"{Candidates[i]}: {str(Percentage_Votes[i])} ({str(Candidate_Votes[i])})")
-print("--------------------------")
-print(f"Winner: {WinnerName}")
-print("--------------------------")
+    who_Won = (
+    f"--------------------------\n"
+    f"Winner: {WinnerName}\n"
+    f"--------------------------\n")
+    print(who_Won)
+    textfile.write(who_Won)
+
+
+
