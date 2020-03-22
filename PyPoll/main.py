@@ -25,7 +25,7 @@ with open(input_path,newline = "") as csvfile:
     for row in csvreader:
         total_votes += 1 # Start Counting Votes 
         
-        # Add Candidate (if not in the list already) and respective Votes 
+        # Add Candidate (if not in the list already) and his respective Votes 
         # Calculate the Votes each Candidate gets 
 
         if row[2] not in Candidates:
@@ -41,7 +41,7 @@ with open(input_path,newline = "") as csvfile:
     for votes in Candidate_Votes:
         Percentage = (votes/total_votes) * 100
         Percentage = round(Percentage)
-        Percentage = "%.3f%%" % Percentage
+        Percentage = "%.3f%%" % Percentage 
         Percentage_Votes.append(Percentage)
 
 
@@ -54,23 +54,12 @@ with open(input_path,newline = "") as csvfile:
 
 #---------------Format the Output for Display------------
 
-output = (
-f"\nElection Results \n"
-f"----------------------------------------\n"
-f"Total Votes: {total_votes}\n"
-f"----------------------------------------\n"
+print("Election Results")
+print("--------------------------")
+print(f"Total Votes: {str(total_votes)}")
+print("--------------------------")
 for i in range(len(Candidates)):
-    f"{Candidates[i]}: {str(Percentage_Votes[i])} {Candidate_votes[i]}"
-f"-----------------------------------------\n"
-f"Winner: {WinnerName}\n"
-f"------------------------------------------\n"
-)
-
-   
- #Print OutPut to terminal
-print(output)
-
-#Export it to a text file
-with open(output_path,"w") as textfile:
-    textfile.write(output)
-
+    print(f"{Candidates[i]}: {str(Percentage_Votes[i])} ({str(Candidate_Votes[i])})")
+print("--------------------------")
+print(f"Winner: {WinnerName}")
+print("--------------------------")
